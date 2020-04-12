@@ -12,6 +12,9 @@ export class TopBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  checkOut() {
+    window.alert('Checkout');
+  }
 }
 
 
