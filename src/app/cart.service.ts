@@ -12,6 +12,10 @@ export class CartService {
     this.items.push(product);
   }
 
+  removeFromCart(productId) {
+    this.items.splice(productId,1);
+  }
+
   getItems() {
     return this.items;
   }
