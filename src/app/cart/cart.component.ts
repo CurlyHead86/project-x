@@ -17,11 +17,8 @@ export class CartComponent implements OnInit {
     this.items = this.cartService.getItems();
   }
 
-  removeFromCartService(productId) {
+  removeFromCart(productId) {
     this.cartService.removeFromCart(productId);
   }
 
-  removeFromCart(productId) {
-    this.items.splice(productId,1);
-  }
 }
