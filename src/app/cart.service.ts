@@ -18,6 +18,11 @@ export class CartService {
 
   getItems() {
     return this.items;
+    
+  }
+
+  getCount(product) {
+    return this.items.filter(product).length;
   }
 
   clearCart() {

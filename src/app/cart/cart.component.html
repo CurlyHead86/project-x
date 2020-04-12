@@ -2,6 +2,7 @@
 
 <div class="cart-item" *ngFor="let item of items; index as productId">
   <span>{{ item.name }}</span>
+  <span>{{getCount(item)}}</span>
   <span>{{ item.price | currency }}</span>
-  <span><button (click)="removeFromCart(productId)">Remove</button></span>
+  <span><button (click)="removeFromCart(productId)"><i class="material-icons">remove_shopping_cart</i>Remove</button></span>
 </div>
