@@ -21,10 +21,6 @@ export class CartService {
     
   }
 
-  getCount(product) {
-    return this.items.filter(product).length;
-  }
-
   clearCart() {
     this.items = [];
     return this.items;
