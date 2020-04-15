@@ -1,0 +1,5 @@
+<h2>Posts</h2>
+
+<div class="postlist-item" *ngFor="let post of posts | async">
+  <span><a [href]="post.link">{{ post.title.rendered }}</a></span>
+</div>
