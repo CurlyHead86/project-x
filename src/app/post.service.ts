@@ -8,14 +8,15 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   getPosts() {
+    this.authorize();
     return this.http.get("http://localhost/wordpress/wp-json/wp/v2/posts");
   }
 
   authorize() {
     this.http
       .post("http://localhost/wordpress/wp-json/jwt-auth/v1/token", {
-        username = "curlyhead86",
-        password = "mollie"
+        username: "curlyhead86",
+        password: "mollie"
       })
       .subscribe(data => {
         console.log(data);
