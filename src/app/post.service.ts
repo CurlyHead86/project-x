@@ -8,8 +8,7 @@ export class PostService {
   constructor(private http: HttpClient, private header: HttpHeaders) {}
 
   getPosts() {
-    this.authorize();
-    return this.http.get("http://localhost/wordpress/wp-json/wp/v2/posts");
+    //return this.http.get("http://localhost/wordpress/wp-json/wp/v2/posts");
   }
 
   authorize() {
@@ -22,7 +21,6 @@ export class PostService {
         data => {
           console.log(data);
           if (data["token"]) {
-            
           }
         },
         error => {

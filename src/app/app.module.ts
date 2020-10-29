@@ -16,6 +16,8 @@ import { PostListComponent } from "./post-list/post-list.component";
 import { PostService } from "./post.service";
 import { InterceptorService } from "./interceptor.service";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthService } from "./auth.service";
+import { TokenService } from "./token.service";
 
 @NgModule({
   imports: [
@@ -42,10 +44,12 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
   ],
   bootstrap: [AppComponent],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
     CartService,
     PostService,
     InterceptorService,
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+    AuthService,
+    TokenService
   ]
 })
 export class AppModule {}
