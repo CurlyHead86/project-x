@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class PostService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private header: HttpHeaders) {}
 
   getPosts() {
     this.authorize();
@@ -18,12 +18,16 @@ export class PostService {
         username: "curlyhead86",
         password: "mollie"
       })
-      .subscribe(data => {
-        console.log(data);
-        //if (data['token']) { // if token is returned
-
-        //this.token = data['token'];
-        //this.tokenChange.emit(this.token);
-      });
+      .subscribe(
+        data => {
+          console.log(data);
+          if (data["token"]) {
+            
+          }
+        },
+        error => {
+          console.log("Access denied");
+        }
+      );
   }
 }
