@@ -1,8 +1,8 @@
 import { Injectable, Inject, Optional } from "@angular/core";
 import {
+  HttpRequest,
   HttpInterceptor,
-  HttpHandler,
-  HttpRequest
+  HttpHandler
 } from "@angular/common/http";
 import { AuthService } from "./auth.service";
 
@@ -18,6 +18,8 @@ export class InterceptorService implements HttpInterceptor {
         Authorization: `Bearer ${token}`
       }
     });
+
+    console.log(token);
     return next.handle(req);
   }
 }

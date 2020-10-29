@@ -6,15 +6,31 @@ import { TokenService } from "./token.service";
 export class AuthService {
   constructor(private http: HttpClient, private token: TokenService) {}
 
-  login(username: string, password: string) {
+  getToken() {
     return this.http.post(
       "http://localhost/wordpress/wp-json/jwt-auth/v1/token",
-      { username, password }
+      {
+        username: "curlyhead86",
+        password: "mollie"
+      }
     );
   }
 
-  getToken() {
-    this.token = new TokenService();
-    this.token.setToken(this.login("curlyhead86", "mollie")["data"]);
+  authorize() {
+    this.http
+      .post("http://localhost/wordpress/wp-json/jwt-auth/v1/token", {
+        username: "curlyhead86",
+        password: "mollie"
+      })
+      .subscribe(
+        data => {
+          console.log(data);
+          if (data["token"]) {
+          }
+        },
+        error => {
+          console.log("Access denied");
+        }
+      );
   }
 }
