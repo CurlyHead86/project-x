@@ -18,6 +18,9 @@ import { InterceptorService } from "./interceptor.service";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthService } from "./auth.service";
 import { TokenService } from "./token.service";
+import { JWTTokenService } from "./jwttoken.service";
+import { LocalStorageService } from "./local-storage.service";
+import { CommentComponent } from "./comment/comment.component";
 
 @NgModule({
   imports: [
@@ -29,7 +32,8 @@ import { TokenService } from "./token.service";
       { path: "products/:productId", component: ProductDetailsComponent },
       { path: "cart", component: CartComponent },
       { path: "shipping", component: ShippingComponent },
-      { path: "posts", component: PostListComponent }
+      { path: "posts", component: PostListComponent },
+      { path: "comment", component: Comment }
     ])
   ],
   declarations: [
@@ -40,7 +44,8 @@ import { TokenService } from "./token.service";
     ProductDetailsComponent,
     CartComponent,
     ShippingComponent,
-    PostListComponent
+    PostListComponent,
+    CommentComponent
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -49,7 +54,9 @@ import { TokenService } from "./token.service";
     PostService,
     InterceptorService,
     AuthService,
-    TokenService
+    TokenService,
+    JWTTokenService,
+    LocalStorageService
   ]
 })
 export class AppModule {}
